@@ -1,5 +1,5 @@
 import runway
-from runway.data_types import category, vector, image
+from runway.data_types import image
 from your_code import model
 
 options = {"network_size": category(choices=[64, 128, 256, 512], default=256)}
@@ -8,14 +8,15 @@ def setup(opts):
     return model(network_size=opts["network_size"])
 
 
-sample_inputs= {
-    "z": vector(length=512),
-    "category": category(choices=["day", "night"])
+sample_inputs = {
+    "image": image(width=512, height=512)
 }
 
+
 sample_outputs = {
-    "image": image(width=1024, height=1024)
+    "image": image(width=512, height=512)
 }
+
 
 @runway.command("sample", inputs=sample_inputs, outputs=sample_outputs)
 def sample(model, inputs):
