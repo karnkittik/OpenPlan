@@ -74,7 +74,7 @@ cuda: 9.2
 framework: tensorflow
 files:
     ignore:
-        - image_dataset/*
+        - text_dataset/*
 build_steps:
     - pip install runway-python==0.1.0
     - pip install -r requirements.txt
